@@ -7,7 +7,7 @@ const getTerminalByMac = async (req, res) => {
     const { mac } = req.params;
 
     const terminal = await terminalService.getTerminalByMac(mac);
-    if (!terminal)
+    if (terminal.length === 0)
       return res
         .status(404)
         .send({ status: "error", message: "terminal not found" });
