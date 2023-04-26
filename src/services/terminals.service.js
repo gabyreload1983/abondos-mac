@@ -6,8 +6,10 @@ export const getAll = async () => await terminalManager.getAll();
 
 export const getTerminal = async (id) => await terminalManager.getTerminal(id);
 
-export const getTerminalByMac = async (mac) =>
-  await terminalManager.getTerminalByMac(mac);
+export const getTerminalByMac = async (mac) => {
+  mac = mac.toUpperCase();
+  return await terminalManager.getTerminalByMac(mac);
+};
 
 export const addTerminal = async (
   mac,
@@ -17,7 +19,7 @@ export const addTerminal = async (
 ) => {
   if (code_terminal) code_terminal = code_terminal.toUpperCase();
   const terminal = {
-    mac,
+    mac: mac.toUpperCase(),
     customer: customer._id,
     code_terminal,
     description,
