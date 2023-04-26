@@ -1,5 +1,6 @@
 import { Router } from "express";
 import passport from "passport";
+import { authorization } from "../../utils.js";
 
 const router = Router();
 
@@ -30,6 +31,7 @@ router.get(
 router.get(
   "/register",
   passport.authenticate("jwt", { session: false, failureRedirect: "/login" }),
+  authorization("superAdmin"),
   (req, res) => {
     res.render("register", { user: req.user });
   }

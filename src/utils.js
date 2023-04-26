@@ -34,3 +34,12 @@ export const createHash = (password) =>
 
 export const validatePassword = (user, password) =>
   bcrypt.compareSync(password, user.password);
+
+export const authorization = (role) => {
+  return async (req, res, next) => {
+    console.log("authorization", req.user);
+    if (req.user.role !== role)
+      return res.status(403).send({ error: "Not permissions" });
+    next();
+  };
+};
