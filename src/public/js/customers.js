@@ -42,3 +42,9 @@ addingCustomer.addEventListener("click", (e) => {
     });
   });
 });
+
+document.addEventListener("keyup", function (e) {
+  if (e.key === "Enter") {
+    addingCustomer.click();
+  }
+});

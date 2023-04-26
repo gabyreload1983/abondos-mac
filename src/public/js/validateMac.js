@@ -30,3 +30,9 @@ validateBtn.addEventListener("click", async () => {
     `;
   }
 });
+
+document.addEventListener("keyup", function (e) {
+  if (e.key === "Enter") {
+    validateBtn.click();
+  }
+});
