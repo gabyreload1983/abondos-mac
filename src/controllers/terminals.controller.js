@@ -2,6 +2,21 @@ import { incompleteValues } from "../lib/validators/validator.js";
 import * as terminalService from "../services/terminals.service.js";
 import * as customerService from "../services/customers.service.js";
 
+const getTerminals = async (req, res) => {
+  try {
+    const terminals = await terminalService.getAll();
+    if (terminals.length === 0)
+      return res
+        .status(404)
+        .send({ status: "error", message: "terminals not found" });
+
+    res.send({ status: "success", terminals });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
+
 const getTerminalByMac = async (req, res) => {
   try {
     const { mac } = req.params;
@@ -71,4 +86,10 @@ const deleteTerminal = async (req, res) => {
   }
 };
 
-export { getTerminalByMac, addTerminal, updateTerminal, deleteTerminal };
+export {
+  getTerminals,
+  getTerminalByMac,
+  addTerminal,
+  updateTerminal,
+  deleteTerminal,
+};

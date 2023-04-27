@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  getTerminals,
   getTerminalByMac,
   addTerminal,
   updateTerminal,
@@ -7,6 +8,8 @@ import {
 } from "../../controllers/terminals.controller.js";
 
 const router = Router();
+
+router.get("/", getTerminals);
 
 router.get("/:mac", getTerminalByMac);
 
