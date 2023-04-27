@@ -9,6 +9,9 @@ export const getCustomer = async (id) => await customerManager.getCustomer(id);
 export const getCustomerByCode = async (code) =>
   await customerManager.getCustomerByCode(code);
 
+export const getCustomerByName = async (name) =>
+  await customerManager.getCustomerByName(name.toUpperCase());
+
 export const addCustomer = async (name, code) => {
   const customer = {
     name: name.toUpperCase(),

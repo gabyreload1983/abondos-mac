@@ -16,6 +16,8 @@ export default class Customers {
 
   getCustomerByCode = async (code) => await customerModel.findOne({ code });
 
+  getCustomerByName = async (name) => await customerModel.findOne({ name });
+
   updateCustomer = async (id, customer) =>
     await customerModel.updateOne({ _id: id }, customer);
 

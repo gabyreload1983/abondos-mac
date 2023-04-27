@@ -41,8 +41,14 @@ const addCustomer = async (req, res) => {
         .status(400)
         .send({ status: "error", message: "Incomplete values" });
 
-    const customer = await customerService.getCustomerByCode(code);
-    if (customer)
+    const customerCode = await customerService.getCustomerByCode(code);
+    if (customerCode)
+      return res
+        .status(404)
+        .send({ status: "error", message: "Customer already exists!" });
+
+    const customerName = await customerService.getCustomerByName(name);
+    if (customerName)
       return res
         .status(404)
         .send({ status: "error", message: "Customer already exists!" });
