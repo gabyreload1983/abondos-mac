@@ -26,7 +26,7 @@ validateBtn.addEventListener("click", async () => {
   }
   if (json.status === "error") {
     responseContainer.innerHTML = `
-    <strong>TERMINAL NO ABONADA!!!</strong>
+    <strong>TERMINAL NO PERTENECE A UN CLIENTE ABONADO!!!</strong>
     `;
   }
 });
