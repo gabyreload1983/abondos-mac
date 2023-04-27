@@ -22,7 +22,6 @@ export const register = async (
     code_technical,
     first_name,
     last_name,
-    role: "user",
   };
 
   return await userManager.create(newUser);

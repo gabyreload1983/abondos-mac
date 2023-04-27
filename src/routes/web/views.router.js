@@ -15,6 +15,7 @@ router.get(
 router.get(
   "/adding-terminal",
   passport.authenticate("jwt", { session: false, failureRedirect: "/login" }),
+  authorization("admin"),
   async (req, res) => {
     res.render("addingTerminal", { user: req.user });
   }
@@ -23,6 +24,7 @@ router.get(
 router.get(
   "/adding-customer",
   passport.authenticate("jwt", { session: false, failureRedirect: "/login" }),
+  authorization("admin"),
   async (req, res) => {
     res.render("addingCustomers", { user: req.user });
   }
@@ -31,6 +33,7 @@ router.get(
 router.get(
   "/customers-detail",
   passport.authenticate("jwt", { session: false, failureRedirect: "/login" }),
+  authorization("admin"),
   async (req, res) => {
     res.render("customersDetail", { user: req.user });
   }

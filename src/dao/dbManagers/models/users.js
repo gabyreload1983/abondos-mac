@@ -24,6 +24,10 @@ const usersSchema = new mongoose.Schema({
     type: String,
     default: "user",
   },
+  adminView: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export const userModel = mongoose.model(userCollection, usersSchema);
