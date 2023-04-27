@@ -29,6 +29,14 @@ router.get(
 );
 
 router.get(
+  "/customers-detail",
+  passport.authenticate("jwt", { session: false, failureRedirect: "/login" }),
+  async (req, res) => {
+    res.render("customersDetail", { user: req.user });
+  }
+);
+
+router.get(
   "/register",
   passport.authenticate("jwt", { session: false, failureRedirect: "/login" }),
   authorization("superAdmin"),
