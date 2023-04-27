@@ -5,7 +5,7 @@ const responseContainer = document.querySelector("#responseContainer");
 validateBtn.addEventListener("click", async () => {
   const macToValidate = mac.value;
 
-  const response = await fetch(`/api/terminal/${macToValidate}`, {
+  const response = await fetch(`/api/terminals/${macToValidate}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

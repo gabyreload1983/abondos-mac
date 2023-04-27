@@ -31,7 +31,7 @@ addingTerminal.addEventListener("click", async () => {
     code_terminal: code_terminal.value,
     description: description.value,
   };
-  const result = await fetch("/api/terminal/", {
+  const result = await fetch("/api/terminals/", {
     method: "POST",
     body: JSON.stringify(terminal),
     headers: {

@@ -29,7 +29,7 @@ app.use(cookieParser());
 initializePassport();
 app.use(passport.initialize());
 
-app.use("/api/terminal", terminalsRouter);
+app.use("/api/terminals", terminalsRouter);
 app.use("/api/customers", customersRouter);
 app.use("/api/users", usersRouter);
 app.use("/", viewsRouter);
