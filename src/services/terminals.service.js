@@ -1,6 +1,8 @@
 import Terminals from "../dao/dbManagers/terminals.js";
+import Customers from "../dao/dbManagers/customers.js";
 
 const terminalManager = new Terminals();
+const customerManager = new Customers();
 
 export const getAll = async () => await terminalManager.getAll();
 
@@ -24,7 +26,13 @@ export const addTerminal = async (
     code_terminal,
     description,
   };
-  return await terminalManager.addTerminal(terminal);
+  const result = await terminalManager.addTerminal(terminal);
+
+  const customerToUpdate = await customerManager.getCustomer(customer._id);
+  customerToUpdate.terminals.push(result._id);
+  await customerManager.updateCustomer(customer._id, customerToUpdate);
+
+  return result;
 };
 
 export const updateTerminal = async (id, terminal) =>

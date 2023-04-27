@@ -6,8 +6,8 @@ export default class Customers {
   }
 
   getAll = async () => {
-    const custoemrs = await customerModel.find();
-    return custoemrs.map((customer) => customer.toObject());
+    const customers = await customerModel.find().populate("terminals");
+    return customers.map((customer) => customer.toObject());
   };
 
   addCustomer = async (customer) => await customerModel.create(customer);

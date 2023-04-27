@@ -13,6 +13,7 @@ const customersSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  terminals: [{ type: mongoose.Schema.Types.ObjectId, ref: "terminals" }],
 });
 
 export const customerModel = mongoose.model(
