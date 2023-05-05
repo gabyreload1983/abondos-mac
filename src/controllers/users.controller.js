@@ -61,7 +61,7 @@ const login = async (req, res) => {
         .status(400)
         .send({ status: "error", message: "Invalid credentials" });
 
-    const response = await userService.login(user, password);
+    const response = await userService.login(user);
 
     const accessToken = generateToken(response);
 

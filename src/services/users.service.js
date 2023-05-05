@@ -1,3 +1,4 @@
+import UsersDto from "../dao/DTOs/users.dto.js";
 import Users from "../dao/dbManagers/users.js";
 import { createHash } from "../utils.js";
 
@@ -26,8 +27,6 @@ export const register = async (
   return await userManager.create(newUser);
 };
 
-export const login = async (user, password) => {
-  user.password = "";
-
-  return user;
+export const login = async (user) => {
+  return new UsersDto(user);
 };
