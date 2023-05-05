@@ -1,5 +1,4 @@
 import Users from "../dao/dbManagers/users.js";
-import { isAdmin } from "../lib/validators/validator.js";
 import { createHash } from "../utils.js";
 
 const userManager = new Users();
@@ -28,10 +27,6 @@ export const register = async (
 };
 
 export const login = async (user, password) => {
-  if (isAdmin(user.email, password)) {
-    user.role = "admin";
-  }
-
   user.password = "";
 
   return user;
