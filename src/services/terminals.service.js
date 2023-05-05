@@ -22,7 +22,7 @@ export const addTerminal = async (
 ) => {
   if (code_terminal) code_terminal = code_terminal.toUpperCase();
   const terminal = {
-    mac: mac.toUpperCase(),
+    mac: MacsDto.formatTerminal(mac),
     customer: customer._id,
     code_terminal,
     description,

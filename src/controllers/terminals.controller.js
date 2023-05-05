@@ -48,6 +48,11 @@ const addTerminal = async (req, res) => {
         .status(400)
         .send({ status: "error", message: "Incomplete values" });
 
+    if (mac.length !== 12 && mac.length !== 17)
+      return res
+        .status(404)
+        .send({ status: "error", message: "Incorrect mac length" });
+
     const terminal = await terminalService.getTerminalByMac(mac);
     if (terminal.length !== 0)
       return res
