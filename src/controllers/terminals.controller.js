@@ -21,11 +21,17 @@ const getTerminalByMac = async (req, res) => {
   try {
     const { mac } = req.params;
 
-    const terminal = await terminalService.getTerminalByMac(mac);
-    if (terminal.length === 0)
+    if (mac.length !== 12 && mac.length !== 17)
       return res
         .status(404)
-        .send({ status: "error", message: "terminal not found" });
+        .send({ status: "error", message: "Incorrect mac length" });
+
+    const terminal = await terminalService.getTerminalByMac(mac);
+    if (terminal.length === 0)
+      return res.status(404).send({
+        status: "error",
+        message: "Mac no pertenece a ningun Abonado!!!",
+      });
 
     res.send({ status: "success", terminal });
   } catch (error) {

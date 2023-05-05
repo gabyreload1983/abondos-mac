@@ -1,5 +1,6 @@
 import Terminals from "../dao/dbManagers/terminals.js";
 import Customers from "../dao/dbManagers/customers.js";
+import MacsDto from "../dao/DTOs/macs.dto.js";
 
 const terminalManager = new Terminals();
 const customerManager = new Customers();
@@ -9,7 +10,7 @@ export const getAll = async () => await terminalManager.getAll();
 export const getTerminal = async (id) => await terminalManager.getTerminal(id);
 
 export const getTerminalByMac = async (mac) => {
-  mac = mac.toUpperCase();
+  mac = MacsDto.formatTerminal(mac);
   return await terminalManager.getTerminalByMac(mac);
 };
 

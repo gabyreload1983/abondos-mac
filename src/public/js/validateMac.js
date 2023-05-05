@@ -4,6 +4,17 @@ const responseContainer = document.querySelector("#responseContainer");
 
 validateBtn.addEventListener("click", async () => {
   const macToValidate = mac.value;
+  if (!macToValidate) {
+    Swal.fire({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 2000,
+      text: `Enter a MAC!`,
+      icon: "error",
+    });
+    return;
+  }
 
   const response = await fetch(`/api/terminals/${macToValidate}`, {
     method: "GET",
@@ -26,7 +37,7 @@ validateBtn.addEventListener("click", async () => {
   }
   if (json.status === "error") {
     responseContainer.innerHTML = `
-    <strong>TERMINAL NO PERTENECE A UN CLIENTE ABONADO!!!</strong>
+    <strong>${json.message}</strong>
     `;
   }
 });
