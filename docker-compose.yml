@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  gabysystem-abonados:
+    build: .
+    image: gabyreload1983/gabysystem-abonados:v1.0.0
+    container_name: gabysystem-abonados-v1.0.0
+    ports:
+      - "3331:3331"
+    restart: on-failure
+    environment:
+      - PORT=
+      - MONGO_URL=
+      - PRIVATE_KEY=
+      - COOKIE_NAME=
