@@ -10,7 +10,7 @@ import usersRouter from "./routes/api/users.router.js";
 import viewsRouter from "./routes/web/views.router.js";
 
 import config from "./config/config.js";
-import { __dirname } from "./utils.js";
+import { __dirname, passportCall } from "./utils.js";
 import initializePassport from "./config/passport.config.js";
 import passport from "passport";
 
@@ -29,8 +29,8 @@ app.use(cookieParser());
 initializePassport();
 app.use(passport.initialize());
 
-app.use("/api/terminals", terminalsRouter);
-app.use("/api/customers", customersRouter);
+app.use("/api/terminals", passportCall("jwt"), terminalsRouter);
+app.use("/api/customers", passportCall("jwt"), customersRouter);
 app.use("/api/users", usersRouter);
 app.use("/", viewsRouter);
 

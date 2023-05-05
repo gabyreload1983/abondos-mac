@@ -6,6 +6,7 @@ import {
   updateCustomer,
   deleteCustomer,
 } from "../../controllers/customers.controller.js";
+import { authorization } from "../../utils.js";
 
 const router = Router();
 
@@ -13,10 +14,10 @@ router.get("/", getCustomers);
 
 router.get("/:code", getCustomer);
 
-router.post("/", addCustomer);
+router.post("/", authorization("admin"), addCustomer);
 
-router.put("/:code", updateCustomer);
+router.put("/:code", authorization("admin"), updateCustomer);
 
-router.delete("/:code", deleteCustomer);
+router.delete("/:code", authorization("superAdmin"), deleteCustomer);
 
 export default router;

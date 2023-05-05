@@ -6,6 +6,7 @@ import {
   updateTerminal,
   deleteTerminal,
 } from "../../controllers/terminals.controller.js";
+import { authorization } from "../../utils.js";
 
 const router = Router();
 
@@ -13,10 +14,10 @@ router.get("/", getTerminals);
 
 router.get("/:mac", getTerminalByMac);
 
-router.post("/", addTerminal);
+router.post("/", authorization("admin"), addTerminal);
 
-router.put("/:mac", updateTerminal);
+router.put("/:mac", authorization("admin"), updateTerminal);
 
-router.delete("/:mac", deleteTerminal);
+router.delete("/:mac", authorization("superAdmin"), deleteTerminal);
 
 export default router;
